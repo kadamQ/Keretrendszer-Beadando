@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="ee8565bb-da7c-43a8-8f52-610b07d20c46">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+/home/adam/Asztal/Keretrendszer-Beadando/dao_relational/src/main/resources/hibernate.cfg.xml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost/horgaszatok?serverTimezone=UTC</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="horgaszat@localhost" uuid="77cf0e18-026b-4456-889b-9ca10512c480">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3309/horgaszat</jdbc-url>
+    </data-source>
+  </component>
+</project>

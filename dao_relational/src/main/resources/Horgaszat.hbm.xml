@@ -1,0 +1,61 @@
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping">
+    <class name="uni.eszterhazy.keretrendszer.model.Horgaszat" table="horgaszatok">
+        <id name="id" type="string" column="id"/>
+        <property name="horgaszatHely" type="string" column="horgaszatHely"/>
+        <property name="horgaszatDatum" type="LocalDate" column="horgaszatDatum"/>
+        <property name="horgaszDarab" type="int" column="horgaszDarab"/>
+        <property name="halDarab" type="int" column="halDarab"/>
+        <list name="fogasok" cascade="all" fetch="join">
+            <key column="horgaszat" not-null="true"/>
+            <list-index column="idx"/>
+            <one-to-many class="uni.eszterhazy.keretrendszer.model.Fogas"/>
+        </list>
+        <one-to-one name="sor" class="uni.eszterhazy.keretrendszer.model.Sor" cascade="save-update"/>
+    </class>
+
+    <class name="uni.eszterhazy.keretrendszer.model.Sor" table="sorok">
+        <id name="id" type="string" column="id">
+            <generator class="foreign">
+                <param name="property">horgaszat</param>
+            </generator>
+        </id>
+        <one-to-one name="horgaszat" class="uni.eszterhazy.keretrendszer.model.Horgaszat" constrained="true" />
+        <property name="nev" type="string" not-null="true"/>
+        <property name="darab" type="int" not-null="true"/>
+    </class>
+
+    <class name="uni.eszterhazy.keretrendszer.model.Fogas" table="fogasok">
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="hal" class="uni.eszterhazy.keretrendszer.model.Hal" fetch="join" cascade="all">
+            <column name="hal_id" not-null="true" />
+        </many-to-one>
+        <property name="tomeg" type="double" not-null="true"/>
+        <property name="horgaszbot" column="horgaszbot">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">uni.eszterhazy.keretrendszer.model.Horgaszbot</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+        <property name="csali" column="csali">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">uni.eszterhazy.keretrendszer.model.Csali</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
+    </class>
+    <class name="uni.eszterhazy.keretrendszer.model.Hal" table="halak">
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="nev" type="string" not-null="true"/>
+        <list name="fogasok" table="fogasok" fetch="join" cascade="all">
+            <key>
+                <column name="hal_id" not-null="true" />
+            </key>
+            <list-index column="idx"/>
+            <one-to-many class="uni.eszterhazy.keretrendszer.model.Fogas" />
+        </list>
+    </class>
+</hibernate-mapping>
