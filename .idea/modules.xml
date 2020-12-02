@@ -4,8 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Keretrendszer-Beadando.iml" filepath="$PROJECT_DIR$/.idea/Keretrendszer-Beadando.iml" />
       <module fileurl="file://$PROJECT_DIR$/console/console.iml" filepath="$PROJECT_DIR$/console/console.iml" />
+      <module fileurl="file://$PROJECT_DIR$/controller/controller.iml" filepath="$PROJECT_DIR$/controller/controller.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/dao_json/dao_json.iml" filepath="$PROJECT_DIR$/dao_json/dao_json.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dao_mongo/dao_mongo.iml" filepath="$PROJECT_DIR$/dao_mongo/dao_mongo.iml" />
       <module fileurl="file://$PROJECT_DIR$/dao_relational/dao_relational.iml" filepath="$PROJECT_DIR$/dao_relational/dao_relational.iml" />
       <module fileurl="file://$PROJECT_DIR$/keretrendszerek_beadando/keretrendszerek_beadando.iml" filepath="$PROJECT_DIR$/keretrendszerek_beadando/keretrendszerek_beadando.iml" />
       <module fileurl="file://$PROJECT_DIR$/service/service.iml" filepath="$PROJECT_DIR$/service/service.iml" />

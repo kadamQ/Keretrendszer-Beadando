@@ -2,12 +2,12 @@ package uni.eszterhazy.keretrendszer.service.impl;
 
 import org.apache.log4j.Logger;
 import uni.eszterhazy.keretrendszer.dao.HorgaszatDAO;
+import uni.eszterhazy.keretrendszer.exception.HorgaszatNotFound;
 import uni.eszterhazy.keretrendszer.model.Horgaszat;
 import uni.eszterhazy.keretrendszer.service.HorgaszatService;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatAlreadyAdded;
 
 import java.util.Collection;
-
 public class HorgaszatServiceImpl implements HorgaszatService {
     Logger logger = Logger.getLogger(this.getClass());
     private HorgaszatDAO dao;
@@ -27,6 +27,11 @@ public class HorgaszatServiceImpl implements HorgaszatService {
     }
     @Override
     public Horgaszat GetHorgaszatById(String id) {
+        try{
+            return dao.readHorgaszat(id);
+        } catch (HorgaszatNotFound horgaszatNotFound){
+            horgaszatNotFound.printStackTrace();
+        }
         return null;
     }
     @Override

@@ -1,5 +1,6 @@
 import uni.eszterhazy.keretrendszer.dao.HorgaszatDAO;
 import uni.eszterhazy.keretrendszer.dao.json.HorgaszatDAOJSON;
+import uni.eszterhazy.keretrendszer.dao.mongo.HorgaszatDAOMongo;
 import uni.eszterhazy.keretrendszer.dao.relational.HorgaszatDAORelational;
 import uni.eszterhazy.keretrendszer.exception.*;
 import uni.eszterhazy.keretrendszer.model.*;
@@ -11,7 +12,9 @@ import java.time.LocalDate;
 
 public class Proba {
     public static void main(String[] args) throws HorgaszatHelyNemlehetUres, HorgaszatDatumNemLehetAJovoben, HorgaszDarabNemLehetKisebbMint1, HalDarabNemLehetKisebbMint0, IOException {
-        HorgaszatDAO dao = new HorgaszatDAOJSON("adatok.json");
+        //HorgaszatDAO dao = new HorgaszatDAOJSON("adatok.json");
+
+        HorgaszatDAO dao = new HorgaszatDAOMongo("mongodb://localhost:31182", "horgaszatok","horgaszat");
         HorgaszatService service = new HorgaszatServiceImpl(dao);
 
         Horgaszat horgaszat = new Horgaszat();
