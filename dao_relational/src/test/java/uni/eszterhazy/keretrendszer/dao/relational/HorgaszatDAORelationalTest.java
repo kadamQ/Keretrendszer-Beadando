@@ -2,10 +2,7 @@ package uni.eszterhazy.keretrendszer.dao.relational;
 
 import org.junit.Test;
 import uni.eszterhazy.keretrendszer.dao.HorgaszatDAO;
-import uni.eszterhazy.keretrendszer.exception.HalDarabNemLehetKisebbMint0;
-import uni.eszterhazy.keretrendszer.exception.HorgaszDarabNemLehetKisebbMint1;
-import uni.eszterhazy.keretrendszer.exception.HorgaszatDatumNemLehetAJovoben;
-import uni.eszterhazy.keretrendszer.exception.HorgaszatHelyNemlehetUres;
+import uni.eszterhazy.keretrendszer.exception.*;
 import uni.eszterhazy.keretrendszer.model.Fogas;
 import uni.eszterhazy.keretrendszer.model.Horgaszat;
 import uni.eszterhazy.keretrendszer.model.Hal;
@@ -37,7 +34,11 @@ public class HorgaszatDAORelationalTest {
         fogasok.add(f);
         fogasok.add(f1);
         horgaszat.setFogasok(fogasok);
-        dao.createHorgaszat(horgaszat);
+        try {
+            dao.createHorgaszat(horgaszat);
+        } catch (HorgaszatAlreadyAdded horgaszatAlreadyAdded) {
+            horgaszatAlreadyAdded.printStackTrace();
+        }
         System.out.println(dao.readAllHorgaszat());
     }
 }

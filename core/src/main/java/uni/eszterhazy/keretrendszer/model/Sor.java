@@ -1,9 +1,12 @@
 package uni.eszterhazy.keretrendszer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.UUID;
 
 public class Sor {
     private String id;
+    @JsonIgnore
     private Horgaszat horgaszat;
     private String nev;
     private int darab;

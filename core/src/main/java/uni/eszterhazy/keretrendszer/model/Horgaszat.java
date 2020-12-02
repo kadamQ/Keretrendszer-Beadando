@@ -1,5 +1,6 @@
 package uni.eszterhazy.keretrendszer.model;
 
+import org.apache.log4j.Logger;
 import uni.eszterhazy.keretrendszer.exception.HalDarabNemLehetKisebbMint0;
 import uni.eszterhazy.keretrendszer.exception.HorgaszDarabNemLehetKisebbMint1;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatDatumNemLehetAJovoben;
@@ -18,8 +19,11 @@ public class Horgaszat {
     private Collection<Fogas> fogasok;
     private Sor sor;
 
+    Logger logger = Logger.getLogger(this.getClass());
+
     public Horgaszat(){
         this.id = UUID.randomUUID().toString();
+        logger.warn("uj horgaszat lett letrehozva a "+this.id+"azonositoval!");
     }
 
     public String getId() {

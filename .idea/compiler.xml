@@ -7,18 +7,22 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="core" />
+        <module name="console" />
         <module name="util" />
+        <module name="dao_json" />
         <module name="dao_relational" />
         <module name="service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
+      <module name="console" target="15" />
       <module name="core" target="8" />
+      <module name="dao_json" target="15" />
       <module name="dao_relational" target="8" />
-      <module name="Keretrendszer-Beadando" target="8" />
+      <module name="Keretrendszer-Beadando" target="1.5" />
       <module name="keretrendszerek_beadando" target="8" />
-      <module name="service" target="8" />
-      <module name="util" target="8" />
+      <module name="service" target="6" />
+      <module name="util" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

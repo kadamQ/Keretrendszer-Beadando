@@ -33,7 +33,7 @@ public class HorgaszatDAORelational implements HorgaszatDAO {
     }
 
     @Override
-    public Horgaszat readHorgaszat() {
+    public Horgaszat readHorgaszat(String id) {
         return null;
     }
 
