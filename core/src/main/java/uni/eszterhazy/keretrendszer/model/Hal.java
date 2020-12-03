@@ -1,10 +1,13 @@
 package uni.eszterhazy.keretrendszer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Collection;
 
 public class Hal {
     private int id;
     private String nev;
+    @JsonIgnore
     private Collection<Fogas> fogasok;
 
     public Hal() {
