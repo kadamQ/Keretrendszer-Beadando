@@ -18,7 +18,7 @@ public class MyConfig {
     @Bean(name="mongoDBDAO")
     public HorgaszatDAO mongodb(){
         try {
-            return new HorgaszatDAOMongo("mongodb://localhost:31182", "horgaszatok","horgaszat");
+            return new HorgaszatDAOMongo("mongodb://localhost:27017", "horgaszatok","horgaszat");
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }

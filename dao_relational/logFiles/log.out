@@ -1,0 +1,25 @@
+2020-12-03 13:57:01, INFO, HHH000412: Hibernate ORM core version 5.4.21.Final
+2020-12-03 13:57:02, INFO, HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-03 13:57:03, WARN, HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2020-12-03 13:57:03, INFO, HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3309/horgaszat?serverTimezone=UTC]
+2020-12-03 13:57:03, INFO, HHH10001001: Connection properties: {password=****, user=root}
+2020-12-03 13:57:03, INFO, HHH10001003: Autocommit mode: false
+2020-12-03 13:57:03, INFO, HHH000115: Hibernate connection pool size: 20 (min=1)
+2020-12-03 13:57:04, INFO, HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2020-12-03 13:57:05, INFO, HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@306c7bf6] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2020-12-03 13:57:05, INFO, HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-03 13:57:05, WARN, uj horgaszat lett letrehozva a 034de301-f46a-4abd-aacc-f3632311cd76azonositoval!
+2020-12-03 13:57:05, WARN, uj horgaszat lett letrehozva a 6346487d-eeab-4f7c-8982-0f0fd901c8caazonositoval!
+2020-12-03 20:18:14, INFO, HHH000412: Hibernate ORM core version 5.4.21.Final
+2020-12-03 20:18:15, INFO, HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-12-03 20:18:16, WARN, HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2020-12-03 20:18:16, INFO, HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3309/horgaszat?serverTimezone=UTC]
+2020-12-03 20:18:16, INFO, HHH10001001: Connection properties: {password=****, user=root}
+2020-12-03 20:18:16, INFO, HHH10001003: Autocommit mode: false
+2020-12-03 20:18:16, INFO, HHH000115: Hibernate connection pool size: 20 (min=1)
+2020-12-03 20:18:17, INFO, HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2020-12-03 20:18:18, INFO, HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@66c9b52f] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2020-12-03 20:18:18, INFO, HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-12-03 20:18:18, WARN, uj horgaszat lett letrehozva a abbd1f3e-0c4c-4f47-8cd6-079ce2ea9b98azonositoval!
+2020-12-03 20:18:19, WARN, uj horgaszat lett letrehozva a b204917b-283f-4c83-a7fa-19fb9971cf37azonositoval!
+2020-12-03 20:18:19, WARN, uj horgaszat lett letrehozva a 3282e0b9-755d-4489-82a2-7cffd30121f3azonositoval!

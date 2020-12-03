@@ -10,6 +10,7 @@
         <module name="console" />
         <module name="controller" />
         <module name="util" />
+        <module name="web" />
         <module name="service" />
         <module name="dao_mongo" />
         <module name="dao_json" />
@@ -27,6 +28,7 @@
       <module name="keretrendszerek_beadando" target="8" />
       <module name="service" target="6" />
       <module name="util" target="1.5" />
+      <module name="web" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

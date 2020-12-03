@@ -37,4 +37,9 @@ public class Hal {
     public void setFogasok(Collection<Fogas> fogasok) {
         this.fogasok = fogasok;
     }
+
+    @Override
+    public String toString() {
+        return nev;
+    }
 }

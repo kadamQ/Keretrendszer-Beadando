@@ -34,7 +34,9 @@ public class HorgaszatDAORelational implements HorgaszatDAO {
 
     @Override
     public Horgaszat readHorgaszat(String id) {
-        return null;
+        Session session= factory.openSession();
+        Horgaszat result = session.get(Horgaszat.class, id);
+        return result;
     }
 
     @Override

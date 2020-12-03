@@ -14,7 +14,7 @@ public class Proba {
     public static void main(String[] args) throws HorgaszatHelyNemlehetUres, HorgaszatDatumNemLehetAJovoben, HorgaszDarabNemLehetKisebbMint1, HalDarabNemLehetKisebbMint0, IOException {
         //HorgaszatDAO dao = new HorgaszatDAOJSON("adatok.json");
 
-        HorgaszatDAO dao = new HorgaszatDAOMongo("mongodb://localhost:31182", "horgaszatok","horgaszat");
+        HorgaszatDAO dao = new HorgaszatDAOMongo("mongodb://localhost:27017", "horgaszatok","horgaszat");
         HorgaszatService service = new HorgaszatServiceImpl(dao);
 
         Horgaszat horgaszat = new Horgaszat();

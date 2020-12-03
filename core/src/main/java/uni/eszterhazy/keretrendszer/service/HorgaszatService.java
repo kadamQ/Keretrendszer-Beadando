@@ -9,7 +9,7 @@ import java.util.Collection;
 public interface HorgaszatService {
     void addHorgaszat(Horgaszat horgaszat) throws HorgaszatAlreadyAdded;
     Collection<Horgaszat> getAllHorgaszat();
-    Horgaszat GetHorgaszatById(String id);
+    Horgaszat getHorgaszatById(String id);
     void updateHorgaszat(Horgaszat horgaszat);
     void removeHorgaszat(Horgaszat horgaszat);
     //Collection<Horgaszat> readAllHorgaszatHely(String horgaszatHely);

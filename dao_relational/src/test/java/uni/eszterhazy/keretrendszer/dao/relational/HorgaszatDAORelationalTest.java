@@ -24,12 +24,12 @@ public class HorgaszatDAORelationalTest {
         horgaszat.setHorgaszatDatum(LocalDate.of(2020,11,5));
         horgaszat.setHorgaszDarab(3);
         horgaszat.setHalDarab(5);
-        Sor sor = new Sor("aranyfacan",2);
+        Sor sor = new Sor("heineken",4);
         sor.setHorgaszat(horgaszat);
         horgaszat.setSor(sor);
         Hal hal = new Hal("keszeg");
-        Fogas f = new Fogas(hal,4.5,Horgaszbot.FENEKEZO, Csali.EGYEB);
-        Fogas f1 = new Fogas(hal,3.7,Horgaszbot.FENEKEZO, Csali.ELO);
+        Fogas f = new Fogas(hal,3.3,Horgaszbot.GYURUNELKULI, Csali.EGYEB);
+        Fogas f1 = new Fogas(hal,2.2,Horgaszbot.FENEKEZO, Csali.ELO);
         List fogasok = new ArrayList<>();
         fogasok.add(f);
         fogasok.add(f1);

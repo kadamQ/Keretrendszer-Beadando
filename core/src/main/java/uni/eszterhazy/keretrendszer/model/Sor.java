@@ -7,6 +7,7 @@ public class Sor {
     @JsonIgnore
     private Horgaszat horgaszat;
     private String nev;
+
     private int darab;
 
     public Sor() {
@@ -47,5 +48,14 @@ public class Sor {
 
     public void setHorgaszat(Horgaszat horgaszat) {
         this.horgaszat = horgaszat;
+    }
+
+    @Override
+    public String toString() {
+        return "Sor{" +
+                "id='" + id + '\'' +
+                ", nev='" + nev + '\'' +
+                ", darab=" + darab +
+                '}';
     }
 }

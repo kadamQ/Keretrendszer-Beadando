@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/keretrendszerek_beadando/keretrendszerek_beadando.iml" filepath="$PROJECT_DIR$/keretrendszerek_beadando/keretrendszerek_beadando.iml" />
       <module fileurl="file://$PROJECT_DIR$/service/service.iml" filepath="$PROJECT_DIR$/service/service.iml" />
       <module fileurl="file://$PROJECT_DIR$/util/util.iml" filepath="$PROJECT_DIR$/util/util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
     </modules>
   </component>
 </project>

@@ -1,18 +1,21 @@
 package uni.eszterhazy.keretrendszer.model;
 
 import org.apache.log4j.Logger;
+import org.springframework.format.annotation.DateTimeFormat;
 import uni.eszterhazy.keretrendszer.exception.HalDarabNemLehetKisebbMint0;
 import uni.eszterhazy.keretrendszer.exception.HorgaszDarabNemLehetKisebbMint1;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatDatumNemLehetAJovoben;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatHelyNemlehetUres;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.UUID;
 
 public class Horgaszat {
     private String id;
     private String horgaszatHely;
+    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     private LocalDate horgaszatDatum;
     private int horgaszDarab;
     private int halDarab;
@@ -49,7 +52,7 @@ public class Horgaszat {
         return horgaszatDatum;
     }
 
-    public void setHorgaszatDatum(LocalDate horgaszatDatum) throws HorgaszatDatumNemLehetAJovoben {
+    public void setHorgaszatDatum(@DateTimeFormat(iso= DateTimeFormat.ISO.DATE) LocalDate horgaszatDatum) throws HorgaszatDatumNemLehetAJovoben {
         if(horgaszatDatum.isAfter(LocalDate.now())){
             throw new HorgaszatDatumNemLehetAJovoben("A dátum nem lehet későbbi a mai dátumnál: "+LocalDate.now().toString()+"!");
         }

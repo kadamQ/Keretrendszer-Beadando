@@ -26,14 +26,16 @@ public class HorgaszatServiceImpl implements HorgaszatService {
         return result;
     }
     @Override
-    public Horgaszat GetHorgaszatById(String id) {
-        try{
+    public Horgaszat getHorgaszatById(String id) {
+        try {
+            Horgaszat horgaszat = dao.readHorgaszat(id);
             return dao.readHorgaszat(id);
-        } catch (HorgaszatNotFound horgaszatNotFound){
+        } catch (HorgaszatNotFound horgaszatNotFound) {
             horgaszatNotFound.printStackTrace();
         }
         return null;
     }
+
     @Override
     public void updateHorgaszat(Horgaszat horgaszat) {
 

@@ -16,6 +16,7 @@
 		<module>dao_json</module>
 		<module>dao_mongo</module>
 		<module>controller</module>
+		<module>web</module>
 	</modules>
 
 	<dependencies>
