@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatAlreadyAdded;
+import uni.eszterhazy.keretrendszer.exception.HorgaszatNotFound;
 import uni.eszterhazy.keretrendszer.model.Csali;
 import uni.eszterhazy.keretrendszer.model.Fogas;
 import uni.eszterhazy.keretrendszer.model.Horgaszat;
@@ -38,7 +39,7 @@ public class HorgaszatController {
     }
 
     @GetMapping(value="/horgaszat/{id}")
-    public String getHorgaszatById(@PathVariable String id, Model model){
+    public String getHorgaszatById(@PathVariable String id, Model model) throws HorgaszatNotFound {
         model.addAttribute("horgaszat",service.getHorgaszatById(id));
         return "horgaszatdetails.jsp";
     }

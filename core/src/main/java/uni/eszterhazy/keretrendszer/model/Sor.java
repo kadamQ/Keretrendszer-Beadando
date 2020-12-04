@@ -7,7 +7,6 @@ public class Sor {
     @JsonIgnore
     private Horgaszat horgaszat;
     private String nev;
-
     private int darab;
 
     public Sor() {

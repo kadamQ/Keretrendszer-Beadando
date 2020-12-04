@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import uni.eszterhazy.keretrendszer.dao.HorgaszatDAO;
+import uni.eszterhazy.keretrendszer.exception.HorgaszatAlreadyAdded;
+import uni.eszterhazy.keretrendszer.exception.HorgaszatNotFound;
 import uni.eszterhazy.keretrendszer.model.Horgaszat;
 
 import java.util.Collection;
@@ -17,12 +19,18 @@ public class HorgaszatDAORelational implements HorgaszatDAO {
     }
 
     @Override
-    public void createHorgaszat(Horgaszat horgaszat) {
-        Session session = factory.openSession();
-        Transaction tx = session.beginTransaction();
-        session.save(horgaszat);
-        tx.commit();
-        session.close();
+    public void createHorgaszat(Horgaszat horgaszat) throws HorgaszatAlreadyAdded {
+        try {
+            readHorgaszat(horgaszat.getId());
+        } catch (HorgaszatNotFound horgaszatNotFound) {
+            Session session = factory.openSession();
+            Transaction tx = session.beginTransaction();
+            session.save(horgaszat);
+            tx.commit();
+            session.close();
+            return;
+        }
+        throw new HorgaszatAlreadyAdded(horgaszat.getId());
     }
 
     @Override
@@ -33,10 +41,12 @@ public class HorgaszatDAORelational implements HorgaszatDAO {
     }
 
     @Override
-    public Horgaszat readHorgaszat(String id) {
+    public Horgaszat readHorgaszat(String id) throws HorgaszatNotFound {
         Session session= factory.openSession();
-        Horgaszat result = session.get(Horgaszat.class, id);
-        return result;
+        if(session.get(Horgaszat.class,id)==null) {
+            throw new HorgaszatNotFound(id);
+        }
+        return session.get(Horgaszat.class, id);
     }
 
     @Override
