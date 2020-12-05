@@ -1,7 +1,5 @@
 import uni.eszterhazy.keretrendszer.dao.HorgaszatDAO;
-import uni.eszterhazy.keretrendszer.dao.json.HorgaszatDAOJSON;
 import uni.eszterhazy.keretrendszer.dao.mongo.HorgaszatDAOMongo;
-import uni.eszterhazy.keretrendszer.dao.relational.HorgaszatDAORelational;
 import uni.eszterhazy.keretrendszer.exception.*;
 import uni.eszterhazy.keretrendszer.model.*;
 import uni.eszterhazy.keretrendszer.service.HorgaszatService;

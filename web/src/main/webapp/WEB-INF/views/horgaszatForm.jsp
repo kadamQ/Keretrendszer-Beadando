@@ -22,11 +22,12 @@
     <form:input path="horgaszDarab"/>
     <form:label path="halDarab">Fogott halak száma</form:label>
     <form:input path="halDarab"/>
+    <form:label path="sor.nev">Sör neve</form:label>
+    <form:input path="sor.nev"/>
+    <form:label path="sor.darab">Sörök száma</form:label>
+    <form:input path="sor.darab"/>
     <input type="submit" value="Küldés"/>
-
     <table id="my_table">
-
-
 </form:form>
 </body>
 </html>

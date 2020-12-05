@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatAlreadyAdded;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatNotFound;
 import uni.eszterhazy.keretrendszer.model.Horgaszat;
+import uni.eszterhazy.keretrendszer.model.Sor;
 import uni.eszterhazy.keretrendszer.service.HorgaszatService;
 
 import java.util.Collection;

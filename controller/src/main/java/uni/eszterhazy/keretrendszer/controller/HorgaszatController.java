@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatAlreadyAdded;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatNotFound;
-import uni.eszterhazy.keretrendszer.model.Csali;
-import uni.eszterhazy.keretrendszer.model.Fogas;
-import uni.eszterhazy.keretrendszer.model.Horgaszat;
-import uni.eszterhazy.keretrendszer.model.Horgaszbot;
+import uni.eszterhazy.keretrendszer.model.*;
 import uni.eszterhazy.keretrendszer.service.HorgaszatService;
 
 @Controller
@@ -28,6 +25,16 @@ public class HorgaszatController {
     @ModelAttribute(value="horgaszat")
     public Horgaszat create(){
         return new Horgaszat();
+    }
+
+    @ModelAttribute(value="sor")
+    public Sor createSor() {
+        return new Sor();
+    }
+
+    @ModelAttribute(value="fogas")
+    public Fogas createFogas(){
+        return new Fogas();
     }
 
     @GetMapping(value="/horgaszatok")
@@ -50,12 +57,40 @@ public class HorgaszatController {
     }
 
     @PostMapping(value="addHorgaszat")
-    public String addDolgozo(@ModelAttribute("horgaszat") Horgaszat horgaszat, Model  model){
+    public String addHorgaszat(@ModelAttribute("horgaszat") Horgaszat horgaszat, Model  model){
         try {
+            //service.addSor(sor);
             service.addHorgaszat(horgaszat);
         } catch (HorgaszatAlreadyAdded horgaszatAlreadyAdded) {
             horgaszatAlreadyAdded.printStackTrace();
         }
         return "redirect:horgaszat/"+horgaszat.getId();
+    }
+
+    @GetMapping(value = "/fogasok/add/{horgaszatId}")
+    public String addFogasForm(@PathVariable String horgaszatId, Model model) {
+        model.addAttribute("id", horgaszatId);
+        model.addAttribute("horgaszbot",Horgaszbot.values());
+        model.addAttribute("csali",Csali.values());
+        return "fogasForm.jsp";
+    }
+
+    @PostMapping(value = "/fogasok/add/{horgaszatId}")
+    public String addFogas(@ModelAttribute("fogas") Fogas fogas, Model model, @PathVariable String horgaszatId) {
+        service.addFogas(fogas, horgaszatId);
+        return "redirect:../../horgaszat/" + horgaszatId;
+    }
+
+    @GetMapping(value = "/fogasok/delete/{id}&{horgaszatId}")
+    public String deleteFogas(@PathVariable int id, @PathVariable String horgaszatId) {
+        service.deleteFogas(id, horgaszatId);
+        return "redirect:../../horgaszat/" + horgaszatId;
+    }
+
+    @GetMapping(value = "/horgaszatok/delete/{id}")
+    public String deleteHorgaszat(@PathVariable String id) throws HorgaszatNotFound {
+        Horgaszat horgaszat = service.getHorgaszatById(id);
+        service.deleteHorgaszat(horgaszat);
+        return "redirect:../../horgaszatok";
     }
 }

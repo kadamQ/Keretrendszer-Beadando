@@ -16,9 +16,8 @@
 <c:if test="${!empty horgaszatok}">
     <table frame="border" rules="all">
         <tr>
-            <th rowspan="2">Azonosító</th>
-            <th rowspan="2">Horgászhely</th>
             <th rowspan="2">Dátum</th>
+            <th rowspan="2">Horgászhely</th>
             <th rowspan="2">Résztvevők száma</th>
             <th rowspan="2">Fogott halak száma</th>
             <th colspan="2">Sör</th>
@@ -29,23 +28,19 @@
         </tr>
 <c:forEach items="${horgaszatok}" var="horgaszat">
     <tr>
-        <td><a href="${pageContext.servletContext.contextPath}/horgaszat/${horgaszat.id}">${horgaszat.id}</a></td>
+        <td><a href="${pageContext.servletContext.contextPath}/horgaszat/${horgaszat.id}">${horgaszat.horgaszatDatum}</a></td>
         <td>${horgaszat.horgaszatHely}</td>
-        <td>${horgaszat.horgaszatDatum}</td>
-        <td>${horgaszat.horgaszDarab}</td>
+         <td>${horgaszat.horgaszDarab}</td>
         <td>${horgaszat.halDarab}</td>
         <td>${horgaszat.sor.nev}</td>
         <td>${horgaszat.sor.darab}</td>
+        <td><a href="${pageContext.servletContext.contextPath}/horgaszatok/delete/${horgaszat.id}">Törlés</a></td>
     </tr>
 </c:forEach>
     </table>
 </c:if>
 <c:if test="${empty horgaszatok}">
 <c:out value="Nincs horgaszat"/></c:if>
-
-<form action="${pageContext.servletContext.contextPath}/addHorgaszat">
-    <input type="submit" value="Horgászat hozzáadása">
-</form>
 
 </body>
 </html>

@@ -7,9 +7,12 @@ import org.hibernate.cfg.Configuration;
 import uni.eszterhazy.keretrendszer.dao.HorgaszatDAO;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatAlreadyAdded;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatNotFound;
+import uni.eszterhazy.keretrendszer.model.Fogas;
 import uni.eszterhazy.keretrendszer.model.Horgaszat;
+import uni.eszterhazy.keretrendszer.model.Sor;
 
 import java.util.Collection;
+import java.util.List;
 
 public class HorgaszatDAORelational implements HorgaszatDAO {
     private static SessionFactory factory;
@@ -25,6 +28,8 @@ public class HorgaszatDAORelational implements HorgaszatDAO {
         } catch (HorgaszatNotFound horgaszatNotFound) {
             Session session = factory.openSession();
             Transaction tx = session.beginTransaction();
+            Sor sor = horgaszat.getSor();
+            sor.setHorgaszat(horgaszat);
             session.save(horgaszat);
             tx.commit();
             session.close();
@@ -36,17 +41,28 @@ public class HorgaszatDAORelational implements HorgaszatDAO {
     @Override
     public Collection<Horgaszat> readAllHorgaszat() {
         Session session = factory.openSession();
+        Transaction transaction = session.beginTransaction();
         Collection<Horgaszat> result = session.createQuery("FROM Horgaszat").list();
+        transaction.commit();
+        session.close();
         return result;
     }
 
     @Override
     public Horgaszat readHorgaszat(String id) throws HorgaszatNotFound {
-        Session session= factory.openSession();
-        if(session.get(Horgaszat.class,id)==null) {
+        Horgaszat horgaszat;
+        Session session = factory.openSession();
+        Transaction transaction = session.beginTransaction();
+        if (session.get(Horgaszat.class, id) == null) {
+            session.close();
             throw new HorgaszatNotFound(id);
         }
-        return session.get(Horgaszat.class, id);
+        else {
+            horgaszat = session.get(Horgaszat.class, id);
+            transaction.commit();
+            session.close();
+            return horgaszat;
+        }
     }
 
     @Override
@@ -55,8 +71,47 @@ public class HorgaszatDAORelational implements HorgaszatDAO {
     }
 
     @Override
-    public void deleteHorgaszat(Horgaszat horgaszat) {
+    public void addFogas(Fogas fogas, String id) {
+        Session session = factory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Horgaszat horgaszat = session.get(Horgaszat.class, id);
+        List<Fogas> fogasok = (List<Fogas>) horgaszat.getFogasok();
+        fogasok.add(fogas);
+        horgaszat.setFogasok(fogasok);
+        session.save(horgaszat);
+        transaction.commit();
+        session.close();
+    }
 
+    @Override
+    public void deleteFogas(int id, String horgaszatId) {
+        Session session = factory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Fogas fogas = session.get(Fogas.class, id);
+        Horgaszat horgaszat = session.get(Horgaszat.class, horgaszatId);
+        List<Fogas> fogasok = (List<Fogas>) horgaszat.getFogasok();
+        fogasok.remove(fogas);
+        session.delete(fogas);
+        transaction.commit();
+        session.close();
+    }
+
+    @Override
+    public void addSor(Sor sor) {
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+        session.save(sor);
+        tx.commit();
+        session.close();
+    }
+
+    @Override
+    public void deleteHorgaszat(Horgaszat horgaszat) {
+        Session session = factory.openSession();
+        Transaction tx = session.beginTransaction();
+        session.delete(horgaszat);
+        tx.commit();
+        session.close();
     }
 }
 

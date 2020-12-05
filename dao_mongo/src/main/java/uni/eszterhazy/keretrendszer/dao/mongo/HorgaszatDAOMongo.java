@@ -1,15 +1,13 @@
 package uni.eszterhazy.keretrendszer.dao.mongo;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.*;
-import com.mongodb.util.JSON;
 import uni.eszterhazy.keretrendszer.dao.HorgaszatDAO;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatAlreadyAdded;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatNotFound;
+import uni.eszterhazy.keretrendszer.model.Fogas;
 import uni.eszterhazy.keretrendszer.model.Horgaszat;
+import uni.eszterhazy.keretrendszer.model.Sor;
 
-import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -57,6 +55,19 @@ public class HorgaszatDAOMongo implements HorgaszatDAO{
     }
 
     public void deleteHorgaszat(Horgaszat horgaszat) {
+
+    }
+
+    public void addFogas(Fogas fogas, String id) {
+
+    }
+
+    public void deleteFogas(int id, String horgaszatId) {
+
+    }
+
+    @Override
+    public void addSor(Sor sor) {
 
     }
 }

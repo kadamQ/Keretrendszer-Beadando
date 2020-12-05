@@ -4,9 +4,11 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import uni.eszterhazy.keretrendszer.dao.HorgaszatDAO;
+import uni.eszterhazy.keretrendszer.model.Fogas;
 import uni.eszterhazy.keretrendszer.model.Horgaszat;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatAlreadyAdded;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatNotFound;
+import uni.eszterhazy.keretrendszer.model.Sor;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -75,6 +77,19 @@ public class HorgaszatDAOJSON implements HorgaszatDAO {
     }
 
     public void deleteHorgaszat(Horgaszat horgaszat) {
+
+    }
+
+    public void addFogas(Fogas fogas, String id) {
+
+    }
+
+    public void deleteFogas(int id, String horgaszatId) {
+
+    }
+
+    @Override
+    public void addSor(Sor sor) {
 
     }
 }

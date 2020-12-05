@@ -34,6 +34,7 @@
           <element id="archive" name="util-1.0-SNAPSHOT.jar">
             <element id="module-output" name="util" />
           </element>
+          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
           <element id="archive" name="dao_mongo-1.0-SNAPSHOT.jar">
             <element id="module-output" name="dao_mongo" />
