@@ -13,6 +13,7 @@ import uni.eszterhazy.keretrendszer.model.Sor;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -91,5 +92,10 @@ public class HorgaszatDAOJSON implements HorgaszatDAO {
     @Override
     public void addSor(Sor sor) {
 
+    }
+
+    @Override
+    public Collection<Horgaszat> findAllBetweenKetDatum(LocalDate start, LocalDate end) {
+        return null;
     }
 }

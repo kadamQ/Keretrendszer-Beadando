@@ -15,6 +15,11 @@ import uni.eszterhazy.keretrendszer.exception.HorgaszatNotFound;
 import uni.eszterhazy.keretrendszer.model.*;
 import uni.eszterhazy.keretrendszer.service.HorgaszatService;
 
+import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+
 @Controller
 public class HorgaszatController {
 
@@ -35,6 +40,11 @@ public class HorgaszatController {
     @ModelAttribute(value="fogas")
     public Fogas createFogas(){
         return new Fogas();
+    }
+
+    @ModelAttribute(value="datum")
+    public Datum datum(){
+        return new Datum();
     }
 
     @GetMapping(value="/horgaszatok")
@@ -92,5 +102,16 @@ public class HorgaszatController {
         Horgaszat horgaszat = service.getHorgaszatById(id);
         service.deleteHorgaszat(horgaszat);
         return "redirect:../../horgaszatok";
+    }
+
+    @PostMapping(value = "/horgaszatok/listByDate")
+    public String findAllBetweenKetDatum(@ModelAttribute("datum") Datum datum, Model model){
+        model.addAttribute("horgaszatok",service.findAllBetweenKetDatum(datum.getStart(),datum.getEnd()));
+        return "horgaszatlist.jsp";
+    }
+
+    @GetMapping(value = "getDatumForm")
+    public String getDatumForm(){
+        return "horgaszatokDatumForm.jsp";
     }
 }

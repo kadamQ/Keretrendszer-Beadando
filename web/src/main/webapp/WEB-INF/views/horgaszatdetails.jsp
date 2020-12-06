@@ -70,8 +70,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="text-sm-center h4">
-        <c:forEach items="${horgaszat.fogasok}" var="fogas"> </td>
+    <c:forEach items="${horgaszat.fogasok}" var="fogas">
+        <tr class="text-sm-center h4">
             <td class="align-middle">${fogas.hal.nev}</td>
             <td class="align-middle">${fogas.tomeg}</td>
             <td class="align-middle">${fogas.horgaszbot}</td>
@@ -79,8 +79,8 @@
             <td class="align-middle"><a class="btn btn-outline-danger btn-lg btn-block fa fa-trash" type="button"
                                         href="${pageContext.servletContext.contextPath}/fogasok/delete/${fogas.id}&${horgaszat.id}"></a>
             </td>
-        </c:forEach>
-    </tr>
+        </tr>
+    </c:forEach>
     </tbody>
 </table>
 </body>

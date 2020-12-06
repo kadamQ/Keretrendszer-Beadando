@@ -5,6 +5,8 @@ import uni.eszterhazy.keretrendszer.exception.HorgaszatAlreadyAdded;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatNotFound;
 import uni.eszterhazy.keretrendszer.model.Sor;
 
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.Collection;
 
 public interface HorgaszatDAO {
@@ -16,4 +18,5 @@ public interface HorgaszatDAO {
     void addFogas(Fogas fogas, String id);
     void deleteFogas(int id, String horgaszatId);
     void addSor(Sor sor);
-}
+    Collection<Horgaszat> findAllBetweenKetDatum(LocalDate start, LocalDate end);
+    }

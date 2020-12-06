@@ -9,6 +9,7 @@ import uni.eszterhazy.keretrendszer.model.Sor;
 import uni.eszterhazy.keretrendszer.service.HorgaszatService;
 import uni.eszterhazy.keretrendszer.exception.HorgaszatAlreadyAdded;
 
+import java.time.LocalDate;
 import java.util.Collection;
 public class HorgaszatServiceImpl implements HorgaszatService {
     Logger logger = Logger.getLogger(this.getClass());
@@ -53,5 +54,10 @@ public class HorgaszatServiceImpl implements HorgaszatService {
     @Override
     public void addSor(Sor sor) {
         dao.addSor(sor);
+    }
+
+    @Override
+    public Collection<Horgaszat> findAllBetweenKetDatum(LocalDate start, LocalDate end) {
+        return dao.findAllBetweenKetDatum(start,end);
     }
 }

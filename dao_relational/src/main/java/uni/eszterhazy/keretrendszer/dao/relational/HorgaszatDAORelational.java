@@ -12,6 +12,9 @@ import uni.eszterhazy.keretrendszer.model.Horgaszat;
 import uni.eszterhazy.keretrendszer.model.Sor;
 
 import javax.persistence.Query;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -43,7 +46,7 @@ public class HorgaszatDAORelational implements HorgaszatDAO {
     public Collection<Horgaszat> readAllHorgaszat() {
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
-        Collection<Horgaszat> result = session.createQuery("FROM Horgaszat").list();
+        Collection<Horgaszat> result = session.createQuery("FROM Horgaszat ORDER BY horgaszatDatum DESC").list();
         transaction.commit();
         session.close();
         return result;
@@ -57,8 +60,7 @@ public class HorgaszatDAORelational implements HorgaszatDAO {
         if (session.get(Horgaszat.class, id) == null) {
             session.close();
             throw new HorgaszatNotFound(id);
-        }
-        else {
+        } else {
             horgaszat = session.get(Horgaszat.class, id);
             transaction.commit();
             session.close();
@@ -113,6 +115,21 @@ public class HorgaszatDAORelational implements HorgaszatDAO {
         session.delete(horgaszat);
         tx.commit();
         session.close();
+    }
+
+    @Override
+    public Collection<Horgaszat> findAllBetweenKetDatum(LocalDate start, LocalDate end) {
+        List<Horgaszat> result;
+        Session session = factory.openSession();
+        Transaction transaction = session.beginTransaction();
+        result = session.createQuery(
+                "FROM Horgaszat AS horgaszat WHERE horgaszat.horgaszatDatum BETWEEN :start AND :end"
+        ).setParameter("start", start)
+                .setParameter("end", end)
+                .list();
+        transaction.commit();
+        session.close();
+        return result;
     }
 }
 

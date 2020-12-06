@@ -1,5 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -19,7 +20,12 @@
                 </button>
             </form>
         </div>
-    </div>
+        <div class="mt-sm-3">
+            <form action="${pageContext.servletContext.contextPath}/getDatumForm">
+                <button type="submit" class="btn btn-success btn-lg btn-block font-weight-bold">Korábbi Horgászatok Két Időpont Között
+                </button>
+            </form>
+        </div>
     <h5 class="mt-sm-5">A türelmetlen horgász sosem fog igazán nagy halat, mert kirántja a horgot, amikor az úszó az
         első kis rángásra
         épphogy bukdácsolni kezd. Nincsenek ahhoz idegei, hogy megvárja, amíg az igazán nagy hal ráharap a horogra. A

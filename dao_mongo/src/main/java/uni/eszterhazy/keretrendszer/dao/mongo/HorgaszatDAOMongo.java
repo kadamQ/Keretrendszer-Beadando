@@ -9,6 +9,7 @@ import uni.eszterhazy.keretrendszer.model.Horgaszat;
 import uni.eszterhazy.keretrendszer.model.Sor;
 
 import java.net.UnknownHostException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -69,5 +70,10 @@ public class HorgaszatDAOMongo implements HorgaszatDAO{
     @Override
     public void addSor(Sor sor) {
 
+    }
+
+    @Override
+    public Collection<Horgaszat> findAllBetweenKetDatum(LocalDate start, LocalDate end) {
+        return null;
     }
 }

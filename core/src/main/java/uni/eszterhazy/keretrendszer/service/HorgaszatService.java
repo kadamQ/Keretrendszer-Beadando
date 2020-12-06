@@ -7,6 +7,7 @@ import uni.eszterhazy.keretrendszer.model.Horgaszat;
 import uni.eszterhazy.keretrendszer.model.Sor;
 
 
+import java.time.LocalDate;
 import java.util.Collection;
 
 public interface HorgaszatService {
@@ -18,4 +19,5 @@ public interface HorgaszatService {
     void addFogas(Fogas fogas, String horgaszatId);
     void deleteFogas(int id, String horgaszatId);
     void addSor(Sor sor);
+    Collection<Horgaszat> findAllBetweenKetDatum(LocalDate start, LocalDate end);
 }

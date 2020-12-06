@@ -26,7 +26,7 @@
       <module name="dao_relational" target="8" />
       <module name="Keretrendszer-Beadando" target="1.5" />
       <module name="keretrendszerek_beadando" target="8" />
-      <module name="service" target="6" />
+      <module name="service" target="8" />
       <module name="util" target="1.5" />
       <module name="web" target="1.7" />
     </bytecodeTargetLevel>
