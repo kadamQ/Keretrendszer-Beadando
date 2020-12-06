@@ -5,15 +5,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import uni.eszterhazy.keretrendszer.dao.HorgaszatDAO;
-import uni.eszterhazy.keretrendszer.exception.HorgaszatAlreadyAdded;
-import uni.eszterhazy.keretrendszer.exception.HorgaszatNotFound;
+import uni.eszterhazy.keretrendszer.exception.*;
 import uni.eszterhazy.keretrendszer.model.Fogas;
 import uni.eszterhazy.keretrendszer.model.Horgaszat;
 import uni.eszterhazy.keretrendszer.model.Sor;
 
-import javax.persistence.Query;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
@@ -69,8 +65,22 @@ public class HorgaszatDAORelational implements HorgaszatDAO {
     }
 
     @Override
-    public void updateHorgaszat(Horgaszat horgaszat) {
-
+    public void updateHorgaszat(String oldId, String horgaszatHely, LocalDate horgaszatDatum, int horgaszDarab, int halDarab, Collection<Fogas> fogasok, Sor sor) throws HorgaszatNotFound, HorgaszatHelyNemlehetUres, HorgaszatDatumNemLehetAJovoben, HorgaszDarabNemLehetKisebbMint1, HalDarabNemLehetKisebbMint0 {
+        Session session=factory.openSession();
+        if (session.get(Horgaszat.class,oldId)== null){
+            throw new HorgaszatNotFound(oldId);
+        }
+        Transaction tx=session.beginTransaction();
+        Horgaszat horgaszat = session.get(Horgaszat.class,oldId);
+        horgaszat.setHorgaszatHely(horgaszatHely);
+        horgaszat.setHorgaszatDatum(horgaszatDatum);
+        horgaszat.setHorgaszDarab(horgaszDarab);
+        horgaszat.setHalDarab(halDarab);
+        horgaszat.setFogasok(fogasok);
+        horgaszat.setSor(sor);
+        session.update(horgaszat);
+        tx.commit();
+        session.close();
     }
 
     @Override

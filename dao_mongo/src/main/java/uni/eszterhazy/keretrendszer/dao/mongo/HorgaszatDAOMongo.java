@@ -2,8 +2,7 @@ package uni.eszterhazy.keretrendszer.dao.mongo;
 
 import com.mongodb.*;
 import uni.eszterhazy.keretrendszer.dao.HorgaszatDAO;
-import uni.eszterhazy.keretrendszer.exception.HorgaszatAlreadyAdded;
-import uni.eszterhazy.keretrendszer.exception.HorgaszatNotFound;
+import uni.eszterhazy.keretrendszer.exception.*;
 import uni.eszterhazy.keretrendszer.model.Fogas;
 import uni.eszterhazy.keretrendszer.model.Horgaszat;
 import uni.eszterhazy.keretrendszer.model.Sor;
@@ -51,7 +50,8 @@ public class HorgaszatDAOMongo implements HorgaszatDAO{
         return HorgaszatAdapter.dbObjectToHorgaszat(cursor.one());
     }
 
-    public void updateHorgaszat(Horgaszat horgaszat) {
+    @Override
+    public void updateHorgaszat(String id, String horgaszatHely, LocalDate horgaszatDatum, int horgaszDarab, int halDarab, Collection<Fogas> fogasok, Sor sor) throws HorgaszatNotFound, HorgaszatHelyNemlehetUres, HorgaszatDatumNemLehetAJovoben, HorgaszDarabNemLehetKisebbMint1, HalDarabNemLehetKisebbMint0 {
 
     }
 
