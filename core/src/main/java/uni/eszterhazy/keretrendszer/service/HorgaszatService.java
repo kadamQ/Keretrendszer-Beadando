@@ -15,9 +15,9 @@ public interface HorgaszatService {
     Collection<Horgaszat> getAllHorgaszat();
     Horgaszat getHorgaszatById(String id) throws HorgaszatNotFound;
     void updateHorgaszat(Horgaszat horgaszat);
-    void deleteHorgaszat(Horgaszat horgaszat);
-    void addFogas(Fogas fogas, String horgaszatId);
-    void deleteFogas(int id, String horgaszatId);
+    void deleteHorgaszat(Horgaszat horgaszat) throws HorgaszatNotFound;
+    void addFogas(Fogas fogas, String horgaszatId) throws HorgaszatNotFound;
+    void deleteFogas(int id, String horgaszatId) throws HorgaszatNotFound;
     void addSor(Sor sor);
     Collection<Horgaszat> findAllBetweenKetDatum(LocalDate start, LocalDate end);
 }

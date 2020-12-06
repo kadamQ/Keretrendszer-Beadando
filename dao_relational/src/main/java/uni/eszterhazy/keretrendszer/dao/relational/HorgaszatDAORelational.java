@@ -74,29 +74,41 @@ public class HorgaszatDAORelational implements HorgaszatDAO {
     }
 
     @Override
-    public void addFogas(Fogas fogas, String id) {
+    public void addFogas(Fogas fogas, String id) throws HorgaszatNotFound {
+        Horgaszat horgaszat;
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
-        Horgaszat horgaszat = session.get(Horgaszat.class, id);
-        List<Fogas> fogasok = (List<Fogas>) horgaszat.getFogasok();
-        fogasok.add(fogas);
-        horgaszat.setFogasok(fogasok);
-        session.save(horgaszat);
-        transaction.commit();
-        session.close();
+        if (session.get(Horgaszat.class, id) == null) {
+            session.close();
+            throw new HorgaszatNotFound(id);
+        } else {
+            horgaszat = session.get(Horgaszat.class, id);
+            List<Fogas> fogasok = (List<Fogas>) horgaszat.getFogasok();
+            fogasok.add(fogas);
+            horgaszat.setFogasok(fogasok);
+            session.save(horgaszat);
+            transaction.commit();
+            session.close();
+        }
     }
 
     @Override
-    public void deleteFogas(int id, String horgaszatId) {
+    public void deleteFogas(int id, String horgaszatId) throws HorgaszatNotFound {
+        Horgaszat horgaszat;
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
-        Fogas fogas = session.get(Fogas.class, id);
-        Horgaszat horgaszat = session.get(Horgaszat.class, horgaszatId);
-        List<Fogas> fogasok = (List<Fogas>) horgaszat.getFogasok();
-        fogasok.remove(fogas);
-        session.delete(fogas);
-        transaction.commit();
-        session.close();
+        if (session.get(Horgaszat.class, horgaszatId) == null) {
+            session.close();
+            throw new HorgaszatNotFound(horgaszatId);
+        } else {
+            Fogas fogas = session.get(Fogas.class, id);
+            horgaszat = session.get(Horgaszat.class, horgaszatId);
+            List<Fogas> fogasok = (List<Fogas>) horgaszat.getFogasok();
+            fogasok.remove(fogas);
+            session.delete(fogas);
+            transaction.commit();
+            session.close();
+        }
     }
 
     @Override
@@ -109,12 +121,17 @@ public class HorgaszatDAORelational implements HorgaszatDAO {
     }
 
     @Override
-    public void deleteHorgaszat(Horgaszat horgaszat) {
+    public void deleteHorgaszat(Horgaszat horgaszat) throws HorgaszatNotFound {
         Session session = factory.openSession();
-        Transaction tx = session.beginTransaction();
-        session.delete(horgaszat);
-        tx.commit();
-        session.close();
+        Transaction transaction = session.beginTransaction();
+        if (session.get(Horgaszat.class, horgaszat.getId()) == null) {
+            session.close();
+            throw new HorgaszatNotFound(horgaszat.getId());
+        } else {
+            session.delete(horgaszat);
+            transaction.commit();
+            session.close();
+        }
     }
 
     @Override

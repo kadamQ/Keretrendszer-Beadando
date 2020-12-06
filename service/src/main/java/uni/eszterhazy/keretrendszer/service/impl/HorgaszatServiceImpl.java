@@ -38,16 +38,16 @@ public class HorgaszatServiceImpl implements HorgaszatService {
 
     }
     @Override
-    public void deleteHorgaszat(Horgaszat horgaszat) {
+    public void deleteHorgaszat(Horgaszat horgaszat) throws HorgaszatNotFound {
         dao.deleteHorgaszat(horgaszat);
     }
     @Override
-    public void addFogas(Fogas fogas, String horgaszatId){
+    public void addFogas(Fogas fogas, String horgaszatId) throws HorgaszatNotFound {
         dao.addFogas(fogas, horgaszatId);
     }
 
     @Override
-    public void deleteFogas(int id, String horgaszatId){
+    public void deleteFogas(int id, String horgaszatId) throws HorgaszatNotFound {
         dao.deleteFogas(id,horgaszatId);
     }
 
