@@ -11,33 +11,77 @@
 
 <html>
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>${horgaszat.id}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>${horgaszat.horgaszatDatum}</title>
 </head>
 <body>
-<table>
-    <tr><td>Horgászat időpontja:</td><td>${horgaszat.horgaszatDatum}</td></tr>
-    <tr><td>Horgászhely:</td><td>${horgaszat.horgaszatHely}</td></tr>
-    <tr><td>Résztvevők száma:</td><td>${horgaszat.horgaszDarab}</td></tr>
-    <tr><td>Fogott halak száma:</td><td>${horgaszat.halDarab}</td></tr>
-    <tr><td>Fogások:</td><td>${horgaszat.fogasok}</td></tr>
-    <tr><td>Sör neve:</td><td>${horgaszat.sor.nev}</td></tr>
-    <tr><td>Sörök szama:</td><td>${horgaszat.sor.darab}</td></tr>
+<table frame="border" rules="all" class="table table-bordered table-hover">
+    <thead class="thead-dark h2 text-sm-center">
+    <tr>
+        <th class="align-middle" rowspan="2">Dátum</th>
+        <th class="align-middle" rowspan="2">Horgászhely</th>
+        <th class="align-middle" rowspan="2">Résztvevők száma</th>
+        <th class="align-middle" rowspan="2">Fogott halak száma</th>
+        <th class="align-middle" colspan="2">Sör</th>
+        <th class="align-middle" rowspan="2">
+            <a class="btn btn-outline-light btn-lg btn-block" type="button"
+               href="${pageContext.servletContext.contextPath}/horgaszatok">Vissza</a>
+        </th>
+    </tr>
+    <tr>
+        <th>Név</th>
+        <th>Darab</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="text-sm-center h4">
+        <td class="align-middle">
+            <a href="${pageContext.servletContext.contextPath}/horgaszat/${horgaszat.id}">${horgaszat.horgaszatDatum}</a>
+        </td>
+        <td class="align-middle">${horgaszat.horgaszatHely}</td>
+        <td class="align-middle">${horgaszat.horgaszDarab}</td>
+        <td class="align-middle">${horgaszat.halDarab}</td>
+        <td class="align-middle">${horgaszat.sor.nev}</td>
+        <td class="align-middle">${horgaszat.sor.darab}</td>
+        <td class="align-middle"><a class="btn btn-outline-success btn-lg btn-block" type="button"
+                                    href="${pageContext.servletContext.contextPath}/fogasok/add/${id}"
+        >Fogás hozzáadása</a>
+        </td>
+    </tr>
+    </tbody>
 </table>
-<form action="${pageContext.servletContext.contextPath}">
-    <input type="submit" value="Home">
-</form>
-
-<table>
-    <a href="${pageContext.servletContext.contextPath}/fogasok/add/${id}">Fogás hozzáadása</a>
-        <ul>
-            <c:forEach items="${horgaszat.fogasok}" var="fogas">
-                <li>
-                    <p>${fogas.hal} ${fogas.tomeg} ${fogas.horgaszbot} ${fogas.csali}</p>
-                    <a href="${pageContext.servletContext.contextPath}/fogasok/delete/${fogas.id}&${horgaszat.id}">Fogas törlése</a>
-                </li>
-            </c:forEach>
-        </ul>
+<table frame="border" rules="all" class="table">
+    <thead class="thead-dark h2 text-sm-center">
+    <tr>
+        <th class="align-middle">Fogások</th>
+    </tr>
+    </thead>
+</table>
+<table frame="border" rules="all" class="table table-bordered table-hover">
+    <thead class="thead-dark h2 text-sm-center">
+    <tr>
+        <th class="align-middle" rowspan="2">Hal neve</th>
+        <th class="align-middle" rowspan="2">Hal tömege</th>
+        <th class="align-middle" rowspan="2">Horgaszbot fajtája</th>
+        <th class="align-middle" rowspan="2">Csali fajtája</th>
+        <th class="align-middle" rowspan="2">Törlés</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="text-sm-center h4">
+        <c:forEach items="${horgaszat.fogasok}" var="fogas"> </td>
+            <td class="align-middle">${fogas.hal.nev}</td>
+            <td class="align-middle">${fogas.tomeg}</td>
+            <td class="align-middle">${fogas.horgaszbot}</td>
+            <td class="align-middle">${fogas.csali}</td>
+            <td class="align-middle"><a class="btn btn-outline-danger btn-lg btn-block fa fa-trash" type="button"
+                                        href="${pageContext.servletContext.contextPath}/fogasok/delete/${fogas.id}&${horgaszat.id}"></a>
+            </td>
+        </c:forEach>
+    </tr>
+    </tbody>
 </table>
 </body>
 </html>

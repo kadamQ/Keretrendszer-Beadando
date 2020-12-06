@@ -16,30 +16,36 @@
 </head>
 <body>
 <div class="container">
-    <h2 class="mt-sm-3">Új horgászat felvétele:</h2>
+    <h2 class="mt-sm-3 ml-sm-3">Új horgászat felvétele:</h2>
     <div class="card">
         <div class="card-body">
             <form:form method="post" action="addHorgaszat" modelAttribute="horgaszat">
             <div class="form-group row">
-                <form:label path="horgaszatHely" for="horgaszatHely" class="col-sm-3 col-form-label" >Horgászhely:</form:label>
+                <form:label path="horgaszatHely" for="horgaszatHely"
+                            class="col-sm-3 col-form-label">Horgászhely:</form:label>
                 <div class="col-sm-9">
-                    <form:input path="horgaszatHely" type="text" class="form-control" name="horgaszatHely" placeholder="Helyszín"/>
+                    <form:input path="horgaszatHely" type="text" class="form-control" name="horgaszatHely"
+                                placeholder="Helyszín"/>
                 </div>
             </div>
             <div class="form-group row">
-                <form:label path="horgaszatDatum" for="horgaszatDatum" class="col-sm-3 col-form-label">Horgászat dátuma:</form:label>
+                <form:label path="horgaszatDatum" for="horgaszatDatum"
+                            class="col-sm-3 col-form-label">Horgászat dátuma:</form:label>
                 <div class="col-sm-9">
                     <form:input path="horgaszatDatum" type="date" class="form-control" name="horgaszatDatum"/>
                 </div>
             </div>
             <div class="form-group row">
-                <form:label path="horgaszDarab" for="horgaszatDarab" class="col-sm-3 col-form-label">Résztvevők száma:</form:label>
+                <form:label path="horgaszDarab" for="horgaszatDarab"
+                            class="col-sm-3 col-form-label">Résztvevők száma:</form:label>
                 <div class="col-sm-9">
-                    <form:input path="horgaszDarab" type="number" min="1" value="1" class="form-control" name="horgaszatDarab"/>
+                    <form:input path="horgaszDarab" type="number" min="1" value="1" class="form-control"
+                                name="horgaszatDarab"/>
                 </div>
             </div>
             <div class="form-group row">
-                <form:label path="halDarab" for="halDarab" class="col-sm-3 col-form-label">Fogott halak száma:</form:label>
+                <form:label path="halDarab" for="halDarab"
+                            class="col-sm-3 col-form-label">Fogott halak száma:</form:label>
                 <div class="col-sm-9">
                     <form:input path="halDarab" type="number" min="0" class="form-control" name="halDarab"/>
                 </div>
@@ -56,7 +62,9 @@
                     <form:input path="sor.darab" type="number" min="0" class="form-control" name="sorNev"/>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success">Mentés</button>
+            <button type="submit" class="btn btn-success btn-lg btn-block">Mentés</button>
+            <a class="btn btn-outline-success btn-lg btn-block" type="button"
+               href="${pageContext.servletContext.contextPath}">Vissza</a>
             <table id="my_table">
                 </form:form>
         </div>
