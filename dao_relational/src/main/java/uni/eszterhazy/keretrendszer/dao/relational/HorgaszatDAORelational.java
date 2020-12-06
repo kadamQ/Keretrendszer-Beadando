@@ -11,6 +11,7 @@ import uni.eszterhazy.keretrendszer.model.Fogas;
 import uni.eszterhazy.keretrendszer.model.Horgaszat;
 import uni.eszterhazy.keretrendszer.model.Sor;
 
+import javax.persistence.Query;
 import java.util.Collection;
 import java.util.List;
 
